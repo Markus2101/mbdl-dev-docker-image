@@ -13,4 +13,4 @@ The Docker image uses the _root_ user by default, but adds a user called _docker
 }
 ```  
 
-Latest build on DockerHub: https://hub.docker.com/repository/docker/markus2101/mbdl-dev  
+Latest build on DockerHub: https://hub.docker.com/r/markus2101/mbdl-dev
