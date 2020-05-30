@@ -17,7 +17,7 @@ RUN apt-get update && \
     apt-get install -y clang-tidy && \
     # modbus library requirements
     apt-get install -y automake autoconf libtool && \
-	# add user 'docker'
+    # add user 'docker'
     useradd -m docker
 
 # clone 'libmodbus' repo and install libraries
@@ -27,6 +27,10 @@ RUN cd home/docker && \
     ./autogen.sh && \
     ./configure && \
     make install
+
+# clone 'better-enums' repo (header only library)
+RUN cd home/docker && \
+    git clone https://github.com/aantron/better-enums
 
 # clean up
 RUN apt-get autoremove -y && \
