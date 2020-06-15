@@ -32,6 +32,9 @@ RUN cd home/docker && \
 RUN cd home/docker && \
     git clone https://github.com/aantron/better-enums
 
+# install 'nlohman/json' library
+RUN apt-get install -y nlohmann-json3-dev
+
 # clean up
 RUN apt-get autoremove -y && \
     apt-get clean -y
