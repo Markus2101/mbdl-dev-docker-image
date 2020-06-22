@@ -12,6 +12,8 @@ RUN apt-get update && \
     apt install -y nano && \
     # required for compiling, building and debugging
     apt-get install -y build-essential gdb cmake ninja-build && \
+	# Python's pip
+	apt-get install -y python-pip && \
     # code formatting
     apt install -y clang-format && \
     apt-get install -y clang-tidy && \
@@ -19,6 +21,9 @@ RUN apt-get update && \
     apt-get install -y automake autoconf libtool && \
     # add user 'docker'
     useradd -m docker
+
+# install 'pymodbus' library for Modbus server and client for HW test
+yes | pip install pymodbus
 
 # clone 'libmodbus' repo and install libraries
 RUN cd home/docker && \
