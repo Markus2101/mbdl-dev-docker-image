@@ -24,16 +24,11 @@ RUN apt-get update && \
 RUN apt-get install -y python-pip && \
     yes | pip install pymodbus
 
-# clone 'libmodbus' repo and install libraries
-RUN cd home/docker && \
-    git clone https://github.com/stephane/libmodbus.git && \
-    cd libmodbus && \
-    ./autogen.sh && \
-    ./configure && \
-    make install
+# clone 'libmodbus' library
+RUN apt-get install -y libmodbus-dev
 
 # clone 'better-enums' repo (header only library)
-RUN cd home/docker && \
+RUN cd /usr/include && \
     git clone https://github.com/aantron/better-enums
 
 # install 'nlohman/json' library
