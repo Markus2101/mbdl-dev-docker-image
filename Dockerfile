@@ -34,6 +34,9 @@ RUN cd /usr/include && \
 # install 'nlohman/json' library
 RUN apt-get install -y nlohmann-json3-dev
 
+# install 'spdlog' logging header only logging framework
+RUN apt-get install -y libspdlog-dev
+
 # clean up
 RUN apt-get autoremove -y && \
     apt-get clean -y
