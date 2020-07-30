@@ -37,6 +37,11 @@ RUN apt-get install -y nlohmann-json3-dev
 # install 'spdlog' logging header only logging framework
 RUN apt-get install -y libspdlog-dev
 
+# download and extract boost library (version 1.72.0)
+RUN apt-get install -y wget && \
+    wget https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.bz2 && \
+    tar --bzip2 -xf boost_1_72_0.tar.bz2 -C /usr/include
+
 # clean up
 RUN apt-get autoremove -y && \
     apt-get clean -y
