@@ -24,7 +24,7 @@ RUN apt-get update && \
 RUN apt-get install -y python-pip && \
     yes | pip install pymodbus
 
-# clone 'libmodbus' library
+# install 'libmodbus' library
 RUN apt-get install -y libmodbus-dev
 
 # clone 'better-enums' repo (header only library)
@@ -41,6 +41,9 @@ RUN apt-get install -y libspdlog-dev
 RUN apt-get install -y wget && \
     wget https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.bz2 && \
     tar --bzip2 -xf boost_1_72_0.tar.bz2 -C /usr/include
+
+# install 'doxygen' for code documentation
+RUN apt-get install -y doxygen
 
 # clean up
 RUN apt-get autoremove -y && \
