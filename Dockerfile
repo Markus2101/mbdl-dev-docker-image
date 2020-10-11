@@ -45,6 +45,15 @@ RUN apt-get install -y wget && \
 # install 'doxygen' for code documentation
 RUN apt-get install -y doxygen
 
+# install Qt (and required installations) for UI development
+RUN apt-get install -y libgl1-mesa-dev && \
+	wget https://download.qt.io/official_releases/qt/5.15/5.15.1/single/qt-everywhere-src-5.15.1.tar.xz && \
+	tar --xz -xf qt-everywhere-src-5.15.1.tar.xz && \
+	cd qt-everywhere-src-5.15.1 && \
+	./configure -opensource -confirm-license
+	make && \
+	make install
+
 # clean up
 RUN apt-get autoremove -y && \
     apt-get clean -y
