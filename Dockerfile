@@ -45,6 +45,9 @@ RUN apt-get install -y wget && \
 # install 'doxygen' for code documentation
 RUN apt-get install -y doxygen
 
+# set correct time (used in logger)
+RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+
 # clean up
 RUN apt-get autoremove -y && \
     apt-get clean -y
