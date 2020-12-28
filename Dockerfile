@@ -45,6 +45,12 @@ RUN apt-get install -y wget && \
 # install 'doxygen' for code documentation
 RUN apt-get install -y doxygen
 
+# install Qt (and some additional installations) for UI development
+RUN apt-get update &&\
+	apt-get install -y qt5-default qtdeclarative5-dev &&\
+	apt-get install -y qml-module-qtquick2 qml-module-qtquick-controls2 qml-module-qtquick-window2 &&\
+	apt-get install -y mesa-utils libgl1-mesa-glx
+
 # set correct time (used in logger)
 RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
