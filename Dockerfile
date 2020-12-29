@@ -55,6 +55,9 @@ RUN apt-get update &&\
 	apt-get install -y qml-module-qtquick2 qml-module-qtquick-controls2 qml-module-qtquick-window2 &&\
 	apt-get install -y mesa-utils libgl1-mesa-glx
 
+# install pkg-config for including the application as shared library in the UI
+RUN apt-get install -y pkg-config
+
 # set correct time (used in logger)
 RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
