@@ -16,9 +16,13 @@ RUN apt-get update && \
     apt install -y clang-format && \
     apt-get install -y clang-tidy && \
     # modbus library requirements
-    apt-get install -y automake autoconf libtool && \
-    # add user 'docker'
-    useradd -m docker
+    apt-get install -y automake autoconf libtool
+
+# add user 'docker' and allow copying to /usr/local/lib and so on -> required when copying shared library
+RUN useradd -m docker &&\
+	usermod -a -G root docker &&\
+	chmod -R g+w /usr/local &&\
+	chmod g+w /usr/share/pkgconfig
 
 # install 'pymodbus' library using PyPi for Modbus server and client for HW test
 RUN apt-get install -y python-pip && \
